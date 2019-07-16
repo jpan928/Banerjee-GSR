@@ -9,7 +9,10 @@ ui <- fluidPage(
     sidebarPanel(
 
       # Input: Select a file ----
-      fileInput("file1", "Choose CSV File",
+      fileInput("file1", "Choose CSV File. Make sure the CSV file selected
+                has the response variable outcomes listed in the first column
+                followed by columns corresponding to each of the explanatory
+                variable values.",
                 multiple = TRUE,
                 accept = c("text/csv",
                            "text/comma-separated-values,text/plain",
@@ -128,7 +131,7 @@ server <- function(input, output, session) {
 
   output$txt <- renderText({"The following table displays the posterior samples for the defined
     parameters."})
-   output$table <- renderDataTable({as.data.frame(round(m.1()$p.samples), 3)},
+   output$table <- renderDataTable({as.data.frame(round(m.1()$p.samples, 3))},
                                    options = list(include.rownames = TRUE,
                                                   initComplete = JS("function(settings, json) {",
                                                                     "$(this.api().table().header()).css({'background-color': '#000', 'color': '#fff'});",

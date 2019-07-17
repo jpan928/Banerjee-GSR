@@ -1,6 +1,7 @@
 # The function spConjNNGP fits Gaussian univariate Bayesian conjugate spatial regression models using Nearest Neighbor Gaussian Processes (NNGP).
 library(shiny)
 library(spNNGP)
+library(DT)
 
 
 ##Fit a Conjugate NNGP model and predict for the holdout
